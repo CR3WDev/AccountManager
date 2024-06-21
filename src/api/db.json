@@ -1,0 +1,37 @@
+{
+  "bills": [
+    {
+      "name": "Faculdade",
+      "estimatedValue": 350.2,
+      "type": "Essential",
+      "id": "af43"
+    },
+    {
+      "id": "715a",
+      "name": "Familia",
+      "estimatedValue": 250,
+      "paidValue": 250,
+      "type": "Leisure"
+    },
+    {
+      "name": "Marcelo",
+      "estimatedValue": "500",
+      "paidValue": 300,
+      "type": "Essential",
+      "id": "b6e2"
+    },
+    {
+      "id": "6eeb",
+      "name": "CDB ",
+      "estimatedValue": 1400,
+      "paidValue": 1500,
+      "type": "Investment"
+    }
+  ],
+  "sheet": [
+    {
+      "name": "Electricity Bill",
+      "id": "1"
+    }
+  ]
+}
