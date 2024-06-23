@@ -2,7 +2,7 @@
   "bills": [
     {
       "name": "Faculdade",
-      "estimatedValue": 350.2,
+      "estimatedValue": "120.30",
       "type": "Essential",
       "id": "af43"
     },
@@ -16,16 +16,9 @@
     {
       "name": "Marcelo",
       "estimatedValue": "500",
-      "paidValue": 300,
+      "paidValue": "500",
       "type": "Essential",
       "id": "b6e2"
-    },
-    {
-      "id": "6eeb",
-      "name": "CDB ",
-      "estimatedValue": 1400,
-      "paidValue": 1500,
-      "type": "Investment"
     }
   ],
   "sheet": [

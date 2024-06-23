@@ -28,7 +28,7 @@ export const LoginPage = () => {
 			<div className="flex align-items-center justify-content-center h-screen">
 				<div className="w-16rem">
 					<div className="text-center">
-						<h1></h1>
+						<h1>AM</h1>
 					</div>
 					<div className="mb-2">
 						<InputText
@@ -70,7 +70,7 @@ export const LoginPage = () => {
 					</div>
 					<div className="text-center">
 						<div className="flex flex-wrap align-items-center justify-content-center p-2">
-							<span>{'Sem conta'}</span>
+							<span>Sem conta?</span>
 							<span
 								onClick={() => {
 									navigate('/register');
@@ -87,7 +87,7 @@ export const LoginPage = () => {
 								}}
 								className="no-underline hover:underline text-primary cursor-pointer"
 							>
-								{'Mudar Senha'}
+								Esqueceu senha?
 							</span>
 						</div>
 					</div>
