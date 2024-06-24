@@ -4,7 +4,7 @@ type ErrorMessageProps = {
 	/** errors do react-hook-forms */
 	errors: any;
 };
-export const ErrorMessageComponent = ({
+export const ErrorMessage = ({
 	errors,
 }: ErrorMessageProps): ReactElement | undefined => {
 	if (!errors) return;

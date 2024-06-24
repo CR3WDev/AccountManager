@@ -1,10 +1,9 @@
-import { ErrorMessageComponent } from '@components/ErrorMessage';
-import { showToastSuccess } from '@components/GlobalToast.tsx';
-import { PasswordFooter } from '@components/PasswordFooter';
-import { PasswordHeader } from '@components/PasswordHeader';
-import { getI18n } from '@hooks/useGetI18n.ts';
-import { UseValidateEmail } from '@hooks/useValidateEmail.ts';
-import { UseValidatePassword } from '@hooks/useValidatePassword.ts';
+import { ErrorMessage } from '@/components/ErrorMessage';
+import { showToastSuccess } from '@/components/GlobalToast';
+import { PasswordFooter } from '@/components/PasswordFooter';
+import { PasswordHeader } from '@/components/PasswordHeader';
+import { UseValidateEmail } from '@/hooks/useValidateEmail';
+import { UseValidatePassword } from '@/hooks/useValidatePassword';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
@@ -15,7 +14,6 @@ import { IUserRegister } from '../RegisterInterfaces';
 import { postRegister } from '../RegisterServices';
 
 export const UserRegister = () => {
-	const registerI18n = getI18n('register');
 	const { mutateAsync: userRegister } = postRegister();
 	const navigate = useNavigate();
 
@@ -35,7 +33,7 @@ export const UserRegister = () => {
 			companyName: data?.companyName,
 		};
 		userRegister(request).then(() => {
-			showToastSuccess(registerI18n.success_message);
+			showToastSuccess('Operação Realizada com sucesso!');
 			navigate('/login');
 		});
 	};
@@ -45,35 +43,22 @@ export const UserRegister = () => {
 			<div className="mb-2">
 				<InputText
 					className={classNames('w-full', {
-						'p-invalid': errors.companyName,
-					})}
-					placeholder={registerI18n.companyName + '*'}
-					id="companyName"
-					{...register('companyName', {
-						required: true,
-					})}
-				/>
-				<ErrorMessageComponent errors={errors.companyName} />
-			</div>
-			<div className="mb-2">
-				<InputText
-					className={classNames('w-full', {
 						'p-invalid': errors.username,
 					})}
-					placeholder={registerI18n.username + '*'}
+					placeholder={'Username' + '*'}
 					id="username"
 					{...register('username', {
 						required: true,
 					})}
 				/>
-				<ErrorMessageComponent errors={errors.username} />
+				<ErrorMessage errors={errors.username} />
 			</div>
 			<div className="mb-2">
 				<InputText
 					className={classNames('w-full', {
 						'p-invalid': errors.email,
 					})}
-					placeholder={registerI18n.email + '*'}
+					placeholder={'Email' + '*'}
 					id="email"
 					{...register('email', {
 						required: true,
@@ -82,7 +67,7 @@ export const UserRegister = () => {
 						},
 					})}
 				/>
-				<ErrorMessageComponent errors={errors.email} />
+				<ErrorMessage errors={errors.email} />
 			</div>
 			<div className="mb-2">
 				<Controller
@@ -101,21 +86,21 @@ export const UserRegister = () => {
 								className={classNames({ 'p-invalid': fieldState.error })}
 								header={<PasswordHeader />}
 								footer={<PasswordFooter />}
-								placeholder={registerI18n.password + '*'}
+								placeholder={'Senha' + '*'}
 								strongRegex={
 									'^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&()_+])(?!.*\\s).{8,20}$'
 								}
 								inputStyle={{ width: '100%' }}
 								maxLength={20}
 								toggleMask
-								promptLabel={registerI18n.choose_a_password}
-								weakLabel={registerI18n.too_weak}
-								mediumLabel={registerI18n.average}
-								strongLabel={registerI18n.strong_password}
+								promptLabel={'Escolha uma senha'}
+								weakLabel={'Fraca'}
+								mediumLabel={'Médio'}
+								strongLabel={'Forte'}
 								id={field.name}
 								name={field.name}
 							/>
-							<ErrorMessageComponent errors={errors.password} />
+							<ErrorMessage errors={errors.password} />
 						</>
 					)}
 				/>
@@ -134,7 +119,7 @@ export const UserRegister = () => {
 						<div className="custom-password">
 							<Password
 								onChange={(e) => field.onChange(e)}
-								placeholder={registerI18n.confirm_password + '*'}
+								placeholder={'Confirmar Senha' + '*'}
 								className={classNames({ 'p-invalid': fieldState.error })}
 								feedback={false}
 								toggleMask
@@ -146,7 +131,7 @@ export const UserRegister = () => {
 				/>
 			</div>
 			<div className=" mb-3">
-				<Button className="w-full " label={registerI18n.create_account} />
+				<Button className="w-full " label={'Crie uma conta'} />
 			</div>
 		</form>
 	);
