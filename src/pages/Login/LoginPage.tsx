@@ -1,11 +1,11 @@
+import { ErrorMessage } from '@/components/ErrorMessage';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { classNames } from 'primereact/utils';
-import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { ErrorMessageComponent } from '../../components/ErrorMessage';
+import { postLogin } from './loginServices';
 
 export const LoginPage = () => {
 	const navigate = useNavigate();
@@ -13,15 +13,16 @@ export const LoginPage = () => {
 		control,
 		formState: { errors },
 		handleSubmit,
-		watch,
 		register,
 	} = useForm();
 
-	useEffect(() => {
-		watch('value');
-	}, [watch('value')]);
+	const { mutateAsync: sendLogin } = postLogin();
 
-	const onSubmit = (data: any) => {};
+	const onSubmit = (data: any) => {
+		sendLogin(data).then((data) => {
+			console.log(data);
+		});
+	};
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
@@ -41,7 +42,7 @@ export const LoginPage = () => {
 								required: true,
 							})}
 						/>
-						<ErrorMessageComponent errors={errors.login} />
+						<ErrorMessage errors={errors.login} />
 					</div>
 					<div className="mb-3">
 						<Controller
@@ -60,7 +61,7 @@ export const LoginPage = () => {
 										toggleMask
 										inputStyle={{ width: '100%' }}
 									/>
-									<ErrorMessageComponent errors={errors.password} />
+									<ErrorMessage errors={errors.password} />
 								</div>
 							)}
 						/>
@@ -70,7 +71,7 @@ export const LoginPage = () => {
 					</div>
 					<div className="text-center">
 						<div className="flex flex-wrap align-items-center justify-content-center p-2">
-							<span>Sem conta?</span>
+							<span>Não tem conta?</span>
 							<span
 								onClick={() => {
 									navigate('/register');

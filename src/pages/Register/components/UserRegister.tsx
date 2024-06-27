@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@/components/ErrorMessage';
-import { showToastSuccess } from '@/components/GlobalToast';
 import { PasswordFooter } from '@/components/PasswordFooter';
 import { PasswordHeader } from '@/components/PasswordHeader';
 import { UseValidateEmail } from '@/hooks/useValidateEmail';
@@ -12,6 +11,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { IUserRegister } from '../RegisterInterfaces';
 import { postRegister } from '../RegisterServices';
+// import { postRegister } from '../RegisterServices';
 
 export const UserRegister = () => {
 	const { mutateAsync: userRegister } = postRegister();
@@ -30,10 +30,8 @@ export const UserRegister = () => {
 			email: data?.email,
 			password: data?.password,
 			username: data?.username,
-			companyName: data?.companyName,
 		};
 		userRegister(request).then(() => {
-			showToastSuccess('Operação Realizada com sucesso!');
 			navigate('/login');
 		});
 	};
@@ -125,7 +123,7 @@ export const UserRegister = () => {
 								toggleMask
 								inputStyle={{ width: '100%' }}
 							/>
-							<ErrorMessageComponent errors={errors.confirmPassword} />
+							<ErrorMessage errors={errors.confirmPassword} />
 						</div>
 					)}
 				/>

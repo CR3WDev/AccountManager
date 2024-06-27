@@ -1,6 +1,6 @@
-import { useService } from '@api/useServices'
-import { Login } from '@pages/Auth/Login/LoginInterfaces.ts'
+import { useService } from '@/hooks/useServices';
+import { Login } from './LoginInterfaces';
 
 export const postLogin = () => {
-  return useService().usePost<Login>('login', '/auth/login')
-}
+	return useService().usePost<Login>('login', '/auth/login');
+};

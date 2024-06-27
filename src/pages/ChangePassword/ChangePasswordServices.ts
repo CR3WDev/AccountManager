@@ -1,5 +1,5 @@
-import { useService } from '@api/useServices'
+import { useService } from '@/hooks/useServices';
 
 export const postChangePassword = () => {
-  return useService().usePost('postChangePassword', '/password/request')
-}
+	return useService().usePost('postChangePassword', '/password/request');
+};
