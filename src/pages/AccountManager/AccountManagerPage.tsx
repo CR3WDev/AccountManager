@@ -3,7 +3,6 @@ import { TabPanel, TabView } from 'primereact/tabview';
 import { useEffect, useRef, useState } from 'react';
 import { BillType, IBill } from '../../types/bills';
 import { getBills } from './AccountManagerService';
-import { AccountManagerHeader } from './components/AccountManagerHeader';
 import { AccountManagerTable } from './components/AccountManagerTable';
 import { AccountManagerToolbar } from './components/AccountManagerToolbar';
 
@@ -28,8 +27,6 @@ export const AccountManagerPage = () => {
 	return (
 		<>
 			<ContextMenu model={items} ref={cm} breakpoint="767px" />
-
-			<AccountManagerHeader />
 			<div className="p-3">
 				<TabView
 					panelContainerClassName="p-0 m-0"

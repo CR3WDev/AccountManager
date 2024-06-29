@@ -17,7 +17,7 @@ export const RegisterPage = () => {
 							<span>Já tem uma conta?</span>
 							<span
 								onClick={() => {
-									navigate('/login');
+									navigate('/auth/login');
 								}}
 								className="no-underline hover:underline text-primary cursor-pointer ml-2"
 							>

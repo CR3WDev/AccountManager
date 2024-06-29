@@ -60,7 +60,7 @@ export const ChangePasswordPage = () => {
 					<div className="text-center  p-2 sm:p-0">
 						<span
 							onClick={() => {
-								navigate('/login');
+								navigate('/auth/login');
 							}}
 							className="no-underline hover:underline text-primary cursor-pointer"
 						>

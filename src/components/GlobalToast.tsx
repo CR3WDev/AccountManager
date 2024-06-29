@@ -10,7 +10,7 @@ const GlobalToast = () => {
 		getToastRef = toast;
 	}, []);
 
-	return <Toast ref={toast} position="top-center" />;
+	return <Toast ref={toast} position="top-right" />;
 };
 const showToastError = (message: string, title?: string) => {
 	if (getToastRef.current)

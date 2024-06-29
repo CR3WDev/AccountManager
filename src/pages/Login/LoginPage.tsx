@@ -74,7 +74,7 @@ export const LoginPage = () => {
 							<span>Não tem conta?</span>
 							<span
 								onClick={() => {
-									navigate('/register');
+									navigate('/auth/register');
 								}}
 								className="no-underline hover:underline text-primary cursor-pointer ml-1"
 							>
@@ -84,7 +84,7 @@ export const LoginPage = () => {
 						<div className="mb-1">
 							<span
 								onClick={() => {
-									navigate('/changepassword');
+									navigate('/auth/changepassword');
 								}}
 								className="no-underline hover:underline text-primary cursor-pointer"
 							>
