@@ -1,59 +1,59 @@
-import { Toast, ToastProps } from 'primereact/toast';
-import { useEffect, useRef } from 'react';
+import { Toast, ToastProps } from "primereact/toast";
+import { useEffect, useRef } from "react";
 
 let getToastRef: ToastProps | any;
 const TOAST_EXPIRATION = 10000;
 const GlobalToast = () => {
-	const toast = useRef<ToastProps | any>();
+  const toast = useRef<ToastProps | any>();
 
-	useEffect(() => {
-		getToastRef = toast;
-	}, []);
+  useEffect(() => {
+    getToastRef = toast;
+  }, []);
 
-	return <Toast ref={toast} position="top-right" />;
+  return <Toast ref={toast} position="top-right" />;
 };
 const showToastError = (message: string, title?: string) => {
-	if (getToastRef.current)
-		getToastRef.current.show({
-			severity: 'error',
-			life: TOAST_EXPIRATION,
-			summary: title || 'Error',
-			detail: message,
-		});
+  if (getToastRef.current)
+    getToastRef.current.show({
+      severity: "error",
+      life: TOAST_EXPIRATION,
+      summary: title || "Error",
+      detail: message,
+    });
 };
 const showToastSuccess = (message: string, title?: string) => {
-	if (getToastRef)
-		getToastRef.current.show({
-			severity: 'success',
-			life: TOAST_EXPIRATION,
-			summary: title || 'Sucesso',
-			detail: message,
-		});
+  if (getToastRef)
+    getToastRef.current.show({
+      severity: "success",
+      life: TOAST_EXPIRATION,
+      summary: title || "Sucesso",
+      detail: message,
+    });
 };
 
 const showToastWarn = (message: string, title?: string) => {
-	if (getToastRef)
-		getToastRef.current.show({
-			severity: 'warn',
-			life: TOAST_EXPIRATION,
-			summary: title || 'Aviso',
-			detail: message,
-		});
+  if (getToastRef)
+    getToastRef.current.show({
+      severity: "warn",
+      life: TOAST_EXPIRATION,
+      summary: title || "Aviso",
+      detail: message,
+    });
 };
 const showToastInfo = (message: string, title?: string) => {
-	if (getToastRef)
-		getToastRef.current.show({
-			severity: 'info',
-			life: TOAST_EXPIRATION,
-			summary: title || 'Informação',
-			detail: message,
-		});
+  if (getToastRef)
+    getToastRef.current.show({
+      severity: "info",
+      life: TOAST_EXPIRATION,
+      summary: title || "Informação",
+      detail: message,
+    });
 };
 export {
-	getToastRef,
-	GlobalToast,
-	showToastError,
-	showToastInfo,
-	showToastSuccess,
-	showToastWarn,
+  getToastRef,
+  GlobalToast,
+  showToastError,
+  showToastInfo,
+  showToastSuccess,
+  showToastWarn,
 };

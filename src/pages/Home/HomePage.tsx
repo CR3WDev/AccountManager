@@ -1,11 +1,12 @@
-import { Topbar } from '@/components/Topbar';
-import { Outlet } from 'react-router-dom';
+import { Topbar } from "@/components/Topbar";
+import { Outlet } from "react-router-dom";
+import { AuthChecker } from "./components/AuthChecker";
 
 export const HomePage = () => {
-	return (
-		<div>
-			<Topbar />
-			<Outlet />
-		</div>
-	);
+  return (
+    <AuthChecker>
+      <Topbar />
+      <Outlet />
+    </AuthChecker>
+  );
 };
