@@ -1,7 +1,6 @@
 import { ErrorMessage } from "@/components/ErrorMessage";
 import { PasswordFooter } from "@/components/PasswordFooter";
 import { PasswordHeader } from "@/components/PasswordHeader";
-import { UseValidatePassword } from "@/hooks/useValidatePassword";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
@@ -9,6 +8,7 @@ import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postNewPassword } from "./NewPasswordServices";
+import { validatePassword } from "@/utils/validatePassword";
 
 export const NewPasswordPage = () => {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ export const NewPasswordPage = () => {
               rules={{
                 required: true,
                 validate: (e) => {
-                  return UseValidatePassword(e) || "Senha Inválida";
+                  return validatePassword(e) || "Senha Inválida";
                 },
               }}
               render={({ field, fieldState }) => (

@@ -6,8 +6,7 @@ import { classNames } from "primereact/utils";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "./loginServices";
-import { useSetLoginResponseDTO } from "@/hooks/useGetLoginResponseDTO";
-import { useEffect } from "react";
+import { setLoginResponseDTO } from "@/utils/getLoginResponseDTO";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -20,15 +19,14 @@ export const LoginPage = () => {
 
   const { mutateAsync: sendLogin } = postLogin();
 
-  const onSubmit = (data: any) => {
-    sendLogin(data).then((data) => {
-      useSetLoginResponseDTO(data.data);
-      navigate("/accountManager");
-    });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = async (data: any) => {
+    console.log(data);
+    const response = await sendLogin(data)
+    setLoginResponseDTO(response?.data?.LoginResponseDTO);
+    navigate("/accountManager");
   };
-  useEffect(() => {
-    sessionStorage.removeItem("LoginResponseDTO");
-  }, []);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex align-items-center justify-content-center h-screen">

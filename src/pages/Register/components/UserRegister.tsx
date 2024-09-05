@@ -1,8 +1,6 @@
 import { ErrorMessage } from "@/components/ErrorMessage";
 import { PasswordFooter } from "@/components/PasswordFooter";
 import { PasswordHeader } from "@/components/PasswordHeader";
-import { UseValidateEmail } from "@/hooks/useValidateEmail";
-import { UseValidatePassword } from "@/hooks/useValidatePassword";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
@@ -11,6 +9,8 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { IUserRegister } from "../RegisterInterfaces";
 import { postRegister } from "../RegisterServices";
+import { validateEmail } from "@/utils/validateEmail";
+import { validatePassword } from "@/utils/validatePassword";
 // import { postRegister } from '../RegisterServices';
 
 export const UserRegister = () => {
@@ -26,6 +26,7 @@ export const UserRegister = () => {
     register,
   } = useForm();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = (data: any) => {
     const request: IUserRegister = {
       email: data?.email,
@@ -67,7 +68,7 @@ export const UserRegister = () => {
           {...register("email", {
             required: true,
             validate: (e) => {
-              return UseValidateEmail(e) || "Email Inválido";
+              return validateEmail(e) || "Email Inválido";
             },
           })}
         />
@@ -81,7 +82,7 @@ export const UserRegister = () => {
             required: true,
             validate: (e) => {
               return (
-                UseValidatePassword(e) ||
+                validatePassword(e) ||
                 validateIsSecurePassword(e) ||
                 "Senha Inválida"
               );

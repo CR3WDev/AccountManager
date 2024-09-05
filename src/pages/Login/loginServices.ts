@@ -1,4 +1,4 @@
-import { useService } from '@/hooks/useServices';
+import { useService } from '@/utils/useServices';
 import { Login } from './LoginInterfaces';
 
 export const postLogin = () => {

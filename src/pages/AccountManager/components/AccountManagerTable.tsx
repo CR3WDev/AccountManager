@@ -6,10 +6,10 @@ import { InputText } from "primereact/inputtext";
 import { Tag } from "primereact/tag";
 import { Dispatch, SetStateAction, useState } from "react";
 import { MdClose, MdEdit } from "react-icons/md";
-import { useTransformToBrl } from "../../../hooks/useTransformToBrl";
 import { BillType, IBill } from "../../../types/bills";
 import { deleteBill } from "../AccountManagerService";
 import { AccountManagerDialog } from "./AccountManagerDialog";
+import { transformToBrl } from "@/utils/transformToBrl";
 
 interface AccountManagerTableProps {
   bills: IBill[];
@@ -62,7 +62,7 @@ export const AccountManagerTable = ({
 
   const priceBodyTemplate = (value: number) => {
     if (!value) return "";
-    return useTransformToBrl(value);
+    return transformToBrl(value);
   };
 
   const typeBodyTemplate = (type: BillType) => {

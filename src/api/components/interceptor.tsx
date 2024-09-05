@@ -1,8 +1,8 @@
 import { showToastError } from "@/components/GlobalToast.tsx";
-import { useGetLoginResponseDTO } from "@/hooks/useGetLoginResponseDTO.ts";
 import { ReactElement } from "react";
 import { IApiException } from "../ApiInterfaces.ts";
 import { api } from "../axios.ts";
+import { getLoginResponseDTO } from "@/utils/getLoginResponseDTO.ts";
 
 type InterceptorProps = {
   children: ReactElement;
@@ -11,7 +11,7 @@ type InterceptorProps = {
 export const Interceptor = ({ children }: InterceptorProps) => {
   api.interceptors.request.use(
     (config) => {
-      const LoginResponseDTO = useGetLoginResponseDTO();
+      const LoginResponseDTO = getLoginResponseDTO();
       if (LoginResponseDTO?.token) {
         config.headers.Authorization = `Bearer ${LoginResponseDTO?.token}`;
       }

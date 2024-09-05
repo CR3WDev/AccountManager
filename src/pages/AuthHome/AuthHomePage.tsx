@@ -5,6 +5,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 export const AuthHomePage = () => {
   const navigate = useNavigate();
+  
   return (
     <div className="flex h-screen">
       <div

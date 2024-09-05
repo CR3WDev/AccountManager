@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import { ErrorMessage } from "@/components/ErrorMessage";
 import { showToastSuccess } from "@/components/GlobalToast";
-import { UseValidateEmail } from "@/hooks/useValidateEmail";
 import { postChangePassword } from "./ChangePasswordServices";
+import { validateEmail } from "@/utils/validateEmail";
 
 export const ChangePasswordPage = () => {
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export const ChangePasswordPage = () => {
               {...register("email", {
                 required: true,
                 validate: (e) => {
-                  return UseValidateEmail(e) || "Email Inválido!";
+                  return validateEmail(e) || "Email Inválido!";
                 },
               })}
             />

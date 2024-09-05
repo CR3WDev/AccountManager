@@ -1,4 +1,4 @@
-import { useService } from '@/hooks/useServices';
+import { useService } from '@/utils/useServices';
 import { IUserRegister } from './RegisterInterfaces';
 
 export const postRegister = () => {

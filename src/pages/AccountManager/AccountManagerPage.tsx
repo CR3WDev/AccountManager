@@ -20,7 +20,7 @@ export const AccountManagerPage = () => {
 
   useEffect(() => {
     getBills().then((data) => {
-      setBills(data.data);
+      setBills(data?.data?.List);
     });
   }, [refreshKey]);
 
